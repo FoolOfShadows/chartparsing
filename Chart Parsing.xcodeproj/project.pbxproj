@@ -1,0 +1,411 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		799AA99B1B31E67D0035E21F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799AA99A1B31E67D0035E21F /* AppDelegate.swift */; };
+		799AA99D1B31E67D0035E21F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 799AA99C1B31E67D0035E21F /* Images.xcassets */; };
+		799AA9A01B31E67D0035E21F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 799AA99E1B31E67D0035E21F /* MainMenu.xib */; };
+		799AA9AC1B31E67D0035E21F /* Chart_ParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799AA9AB1B31E67D0035E21F /* Chart_ParsingTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		799AA9A61B31E67D0035E21F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 799AA98D1B31E67D0035E21F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 799AA9941B31E67D0035E21F;
+			remoteInfo = "Chart Parsing";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		799AA9951B31E67D0035E21F /* Chart Parsing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chart Parsing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		799AA9991B31E67D0035E21F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		799AA99A1B31E67D0035E21F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		799AA99C1B31E67D0035E21F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		799AA99F1B31E67D0035E21F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		799AA9A51B31E67D0035E21F /* Chart ParsingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Chart ParsingTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		799AA9AA1B31E67D0035E21F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		799AA9AB1B31E67D0035E21F /* Chart_ParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chart_ParsingTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		799AA9921B31E67D0035E21F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		799AA9A21B31E67D0035E21F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		799AA98C1B31E67D0035E21F = {
+			isa = PBXGroup;
+			children = (
+				799AA9971B31E67D0035E21F /* Chart Parsing */,
+				799AA9A81B31E67D0035E21F /* Chart ParsingTests */,
+				799AA9961B31E67D0035E21F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		799AA9961B31E67D0035E21F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				799AA9951B31E67D0035E21F /* Chart Parsing.app */,
+				799AA9A51B31E67D0035E21F /* Chart ParsingTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		799AA9971B31E67D0035E21F /* Chart Parsing */ = {
+			isa = PBXGroup;
+			children = (
+				799AA99A1B31E67D0035E21F /* AppDelegate.swift */,
+				799AA99C1B31E67D0035E21F /* Images.xcassets */,
+				799AA99E1B31E67D0035E21F /* MainMenu.xib */,
+				799AA9981B31E67D0035E21F /* Supporting Files */,
+			);
+			path = "Chart Parsing";
+			sourceTree = "<group>";
+		};
+		799AA9981B31E67D0035E21F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				799AA9991B31E67D0035E21F /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		799AA9A81B31E67D0035E21F /* Chart ParsingTests */ = {
+			isa = PBXGroup;
+			children = (
+				799AA9AB1B31E67D0035E21F /* Chart_ParsingTests.swift */,
+				799AA9A91B31E67D0035E21F /* Supporting Files */,
+			);
+			path = "Chart ParsingTests";
+			sourceTree = "<group>";
+		};
+		799AA9A91B31E67D0035E21F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				799AA9AA1B31E67D0035E21F /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		799AA9941B31E67D0035E21F /* Chart Parsing */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 799AA9AF1B31E67D0035E21F /* Build configuration list for PBXNativeTarget "Chart Parsing" */;
+			buildPhases = (
+				799AA9911B31E67D0035E21F /* Sources */,
+				799AA9921B31E67D0035E21F /* Frameworks */,
+				799AA9931B31E67D0035E21F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Chart Parsing";
+			productName = "Chart Parsing";
+			productReference = 799AA9951B31E67D0035E21F /* Chart Parsing.app */;
+			productType = "com.apple.product-type.application";
+		};
+		799AA9A41B31E67D0035E21F /* Chart ParsingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 799AA9B21B31E67D0035E21F /* Build configuration list for PBXNativeTarget "Chart ParsingTests" */;
+			buildPhases = (
+				799AA9A11B31E67D0035E21F /* Sources */,
+				799AA9A21B31E67D0035E21F /* Frameworks */,
+				799AA9A31B31E67D0035E21F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				799AA9A71B31E67D0035E21F /* PBXTargetDependency */,
+			);
+			name = "Chart ParsingTests";
+			productName = "Chart ParsingTests";
+			productReference = 799AA9A51B31E67D0035E21F /* Chart ParsingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		799AA98D1B31E67D0035E21F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Fulgent Wake";
+				TargetAttributes = {
+					799AA9941B31E67D0035E21F = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					799AA9A41B31E67D0035E21F = {
+						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = 799AA9941B31E67D0035E21F;
+					};
+				};
+			};
+			buildConfigurationList = 799AA9901B31E67D0035E21F /* Build configuration list for PBXProject "Chart Parsing" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 799AA98C1B31E67D0035E21F;
+			productRefGroup = 799AA9961B31E67D0035E21F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				799AA9941B31E67D0035E21F /* Chart Parsing */,
+				799AA9A41B31E67D0035E21F /* Chart ParsingTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		799AA9931B31E67D0035E21F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				799AA99D1B31E67D0035E21F /* Images.xcassets in Resources */,
+				799AA9A01B31E67D0035E21F /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		799AA9A31B31E67D0035E21F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		799AA9911B31E67D0035E21F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				799AA99B1B31E67D0035E21F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		799AA9A11B31E67D0035E21F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				799AA9AC1B31E67D0035E21F /* Chart_ParsingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		799AA9A71B31E67D0035E21F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 799AA9941B31E67D0035E21F /* Chart Parsing */;
+			targetProxy = 799AA9A61B31E67D0035E21F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		799AA99E1B31E67D0035E21F /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				799AA99F1B31E67D0035E21F /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		799AA9AD1B31E67D0035E21F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		799AA9AE1B31E67D0035E21F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		799AA9B01B31E67D0035E21F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Chart Parsing/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		799AA9B11B31E67D0035E21F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Chart Parsing/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		799AA9B31B31E67D0035E21F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Chart ParsingTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Chart Parsing.app/Contents/MacOS/Chart Parsing";
+			};
+			name = Debug;
+		};
+		799AA9B41B31E67D0035E21F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Chart ParsingTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Chart Parsing.app/Contents/MacOS/Chart Parsing";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		799AA9901B31E67D0035E21F /* Build configuration list for PBXProject "Chart Parsing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				799AA9AD1B31E67D0035E21F /* Debug */,
+				799AA9AE1B31E67D0035E21F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		799AA9AF1B31E67D0035E21F /* Build configuration list for PBXNativeTarget "Chart Parsing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				799AA9B01B31E67D0035E21F /* Debug */,
+				799AA9B11B31E67D0035E21F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		799AA9B21B31E67D0035E21F /* Build configuration list for PBXNativeTarget "Chart ParsingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				799AA9B31B31E67D0035E21F /* Debug */,
+				799AA9B41B31E67D0035E21F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 799AA98D1B31E67D0035E21F /* Project object */;
+}
