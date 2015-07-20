@@ -11,6 +11,7 @@
 		799AA99D1B31E67D0035E21F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 799AA99C1B31E67D0035E21F /* Images.xcassets */; };
 		799AA9A01B31E67D0035E21F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 799AA99E1B31E67D0035E21F /* MainMenu.xib */; };
 		799AA9AC1B31E67D0035E21F /* Chart_ParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799AA9AB1B31E67D0035E21F /* Chart_ParsingTests.swift */; };
+		799AA9B61B31E6C80035E21F /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799AA9B51B31E6C80035E21F /* Functions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +33,7 @@
 		799AA9A51B31E67D0035E21F /* Chart ParsingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Chart ParsingTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		799AA9AA1B31E67D0035E21F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		799AA9AB1B31E67D0035E21F /* Chart_ParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chart_ParsingTests.swift; sourceTree = "<group>"; };
+		799AA9B51B31E6C80035E21F /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				799AA99C1B31E67D0035E21F /* Images.xcassets */,
 				799AA99E1B31E67D0035E21F /* MainMenu.xib */,
 				799AA9981B31E67D0035E21F /* Supporting Files */,
+				799AA9B51B31E6C80035E21F /* Functions.swift */,
 			);
 			path = "Chart Parsing";
 			sourceTree = "<group>";
@@ -150,7 +153,9 @@
 		799AA98D1B31E67D0035E21F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Fulgent Wake";
 				TargetAttributes = {
 					799AA9941B31E67D0035E21F = {
@@ -206,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				799AA99B1B31E67D0035E21F /* AppDelegate.swift in Sources */,
+				799AA9B61B31E6C80035E21F /* Functions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +266,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -326,6 +333,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Chart Parsing/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fulgentwake.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -337,6 +345,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Chart Parsing/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fulgentwake.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -356,6 +365,7 @@
 				);
 				INFOPLIST_FILE = "Chart ParsingTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fulgentwake.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Chart Parsing.app/Contents/MacOS/Chart Parsing";
 			};
@@ -372,6 +382,7 @@
 				);
 				INFOPLIST_FILE = "Chart ParsingTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fulgentwake.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Chart Parsing.app/Contents/MacOS/Chart Parsing";
 			};
@@ -396,6 +407,7 @@
 				799AA9B11B31E67D0035E21F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		799AA9B21B31E67D0035E21F /* Build configuration list for PBXNativeTarget "Chart ParsingTests" */ = {
 			isa = XCConfigurationList;
@@ -404,6 +416,7 @@
 				799AA9B41B31E67D0035E21F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
