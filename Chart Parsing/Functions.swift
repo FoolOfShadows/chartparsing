@@ -9,7 +9,7 @@
 import Cocoa
 import Foundation
 
-//Cribbed from raywenderlich.com
+//Cribbed from raywenderlich.com.  Updated for Swift 2.0
 extension String {
 	func stringByTrimmingLeadingAndTrailingWhitespace() -> String {
 		let leadingAndTrailingWhitespacePattern = "\\s*\\n"
