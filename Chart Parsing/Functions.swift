@@ -84,6 +84,7 @@ func cleanTheSections(theSection:String, badBits:[String]) -> String {
 	return cleanedText
 }
 
+//A basic regular expression search function
 func simpleRegExMatch(theText: String, theExpression: String) -> String {
 	var theResult = ""
 	let regEx = try! NSRegularExpression(pattern: theExpression, options: [])

@@ -20,7 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	
 	@IBAction func processButton(sender: AnyObject) {
-		//Get the clipboard
+		//Get the clipboard to process
 		let pasteBoard = NSPasteboard.generalPasteboard()
 		let theText = pasteBoard.stringForType("public.utf8-plain-text")
 		
