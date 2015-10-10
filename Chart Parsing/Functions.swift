@@ -80,7 +80,7 @@ func cleanTheSections(theSection:String, badBits:[String]) -> String {
 	for theBit in badBits {
 		cleanedText = cleanedText.stringByReplacingOccurrencesOfString(theBit, withString: "")
 	}
-	cleanedText = cleanedText.stringByTrimmingLeadingAndTrailingWhitespace()
+	cleanedText = cleanedText.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
 	return cleanedText
 }
 
@@ -94,6 +94,85 @@ func simpleRegExMatch(theText: String, theExpression: String) -> String {
 		theResult = (theText as NSString).substringWithRange(match.range)
 	}
 	return theResult
+}
+
+//Adjust visit date values based on how far the visit is scheduled into the future
+func addingDays (theDate: NSDate, daysToAdd: Int) -> NSDate {
+	let components:NSDateComponents = NSDateComponents()
+	components.setValue(daysToAdd, forComponent: NSCalendarUnit.Day);
+	let newDate = NSCalendar.currentCalendar().dateByAddingComponents(components, toDate: theDate, options: NSCalendarOptions(rawValue:0))
+	return newDate!
+}
+
+//Add specific characters to the beginning of each line
+func addCharatersToFront(theText:String, theCharacters:String) ->String {
+	var returnText = ""
+	var newTextArray = [String]()
+	let textArray = theText.componentsSeparatedByString("\n")
+	for line in textArray {
+		let newLine = "- " + line
+		newTextArray.append(newLine)
+	}
+	
+	returnText = newTextArray.joinWithSeparator("\n")
+	
+	return returnText
+}
+
+//Parse a string containing a full name into it's components and returns
+//the version of the name we use to label files
+func getFileLabellingName(name: String) -> String {
+	var fileLabellingName = String()
+	var ptFirstName = ""
+	var ptLastName = ""
+	var ptMiddleName = ""
+	var ptExtraName = ""
+	let extraNameBits = ["Sr", "Jr", "II", "III", "IV", "MD"]
+	
+	func checkForMatchInSets(arrayToCheckIn: [String], arrayToCheckFor: [String]) -> Bool {
+		var result = false
+		for item in arrayToCheckIn {
+			if arrayToCheckFor.contains(item) {
+				result = true
+				break
+			}
+		}
+		return result
+	}
+	
+	let nameComponents = name.componentsSeparatedByString(" ")
+	
+	let extraBitsCheck = checkForMatchInSets(nameComponents, arrayToCheckFor: extraNameBits)
+	
+	if extraBitsCheck == true {
+		ptLastName = nameComponents[nameComponents.count-2]
+		ptExtraName = nameComponents[nameComponents.count-1]
+	} else {
+		ptLastName = nameComponents[nameComponents.count-1]
+		ptExtraName = ""
+	}
+	
+	if nameComponents[nameComponents.count - 2] == "Van" {
+		ptLastName = "Van " + ptLastName
+	}
+	
+	//Get first name
+	ptFirstName = nameComponents[0]
+	
+	//Get middle name
+	if (nameComponents.count == 3 && extraBitsCheck == true) || nameComponents.count < 3 {
+		ptMiddleName = ""
+	} else {
+		ptMiddleName = nameComponents[1]
+	}
+	
+	fileLabellingName = "\(ptLastName)\(ptFirstName)\(ptMiddleName)\(ptExtraName)"
+	fileLabellingName = fileLabellingName.stringByReplacingOccurrencesOfString(" ", withString: "")
+	fileLabellingName = fileLabellingName.stringByReplacingOccurrencesOfString("-", withString: "")
+	fileLabellingName = fileLabellingName.stringByReplacingOccurrencesOfString("'", withString: "")
+	
+	
+return fileLabellingName
 }
 	
 	//A way to extract text using mapping and filtering.  I've changed to using regular expressions
