@@ -82,24 +82,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //			ptMiddleName = ptNameComponents[1]
 //		}
 
+		//Get the diagnosis info
 		var dxRegex = regexTheText(theText!, startOfText: "\\nDiagnoses", endOfText: "Social")
-		dxRegex = cleanTheSections(dxRegex, badBits: ["Diagnoses\n", "Chronic diagnoses\n", "No active Acute diagnoses.\n", "Acute diagnoses\n", "Social"])
+		dxRegex = cleanTheSections(dxRegex, badBits: ["Diagnoses\n", "Chronic diagnoses\n", "No active Acute diagnoses.\n", "Acute diagnoses\n", "Social", "Term\n"])
 		dxRegex = "DIAGNOSES:\n" + dxRegex
 		
+		//Get the medicine info
 		var medRegex = regexTheText(theText!, startOfText: "\\nMedications", endOfText: "Encounters")
-		medRegex = cleanTheSections(medRegex, badBits: ["Medications\n", "Encounters"])
+		medRegex = cleanTheSections(medRegex, badBits: ["Medications\n", "Encounters", " Show historical"])
 		medRegex = addCharatersToFront(medRegex, theCharacters: "-  ")
 		medRegex = "CURRENT MEDICATIONS:\n(- = currently taking; x = not currently taking; ? = unsure)\n" + medRegex
 		
+		//Get the nutrition info
 		var nutritionRegex = regexTheText(theText!, startOfText: "\\nNutrition history", endOfText: "Advanced directives")
 		nutritionRegex = cleanTheSections(nutritionRegex, badBits: ["Nutrition history\n", "Advanced directives"])
 		nutritionRegex = "NUTRITION:\n" + nutritionRegex
 		
+		//Get the social info
 		var socialRegex = regexTheText(theText!, startOfText: "\\nSocial history", endOfText: "Past medical history")
 		socialRegex = cleanTheSections(socialRegex, badBits: ["Past medical history", "Social history (free text)\n", "Social history\n", "Smoking status\n"])
 		socialRegex = "SOCIAL HISTORY:\n" + socialRegex
 		//print(socialRegex)
 		
+		//Get the family history info
 		let finalFMHParameter = defineFinalParameter(theText!, firstParameter: "Preventive care", secondParameter: "Social history")
 		//print(finalFMHParameter)
 		var fmhRegex = regexTheText(theText!, startOfText: "Family health history", endOfText: finalFMHParameter)
@@ -107,15 +112,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		fmhRegex = "FAMILY HEALTH HISTORY:\n" + fmhRegex
 		//print(fmhRegex)
 		
+		//Get the allergy info
 		let finalAllergiesParameter = defineFinalParameter(theText!, firstParameter: "Family health history", secondParameter: "Preventive care")
 		var basicAllergyRegex = regexTheText(theText!, startOfText: "\\nAllergies[^(free text)]", endOfText: "Medications")
 		//print(basicAllergyRegex)
 		basicAllergyRegex = cleanTheSections(basicAllergyRegex, badBits: ["Allergies\n", "Drug allergies\n", "Environmental allergies\n", "No environmental allergies recorded\n", "Food allergies\n", "Medications"])
 		var freeAllergyRegex = regexTheText(theText!, startOfText: "Allergies \\(free text\\)", endOfText: finalAllergiesParameter)
-		freeAllergyRegex = cleanTheSections(freeAllergyRegex, badBits: ["Allergies (free text)\n", "ALLERGIES:", "ALLERGIES", "Use structured allergies to receive interaction alerts\n", "Food allergies:", "Food Allergies:", "Food Allergies", "Food allergies\n", "Environmental allergies:\n", "Environmental allergies\n", "Environmental Allergies\n", "Drug allergies:", "Drug allergies-", "Drug allergies", "No Known Drug Allergies", "No Known", "Drug Allergies:", "Drug Allergies", "Family health history", "Preventive care", "No food allergies recorded\n"])
+		freeAllergyRegex = cleanTheSections(freeAllergyRegex, badBits: ["Allergies (free text)\n", "ALLERGIES:", "ALLERGIES", "Use structured allergies to receive interaction alerts\n", "Food allergies:", "Food Allergies:", "Food Allergies", "Food allergies\n", "Food Allergies\n", "Environmental allergies:\n", "Environmental allergies\n", "Environmental Allergies\n", "Drug allergies:", "Drug allergies-", "Drug allergies", "No Known Drug Allergies", "No Known", "Drug Allergies:", "Drug Allergies", "Family health history", "Preventive care", "No food allergies recorded\n"])
 		
 		let allergyResults = "ALLERGIES:\n" + basicAllergyRegex + "\n" + freeAllergyRegex
 		
+		//Get the preventive info
 		let finalPreventiveParameter = defineFinalParameter(theText!, firstParameter: "Nutrition history", secondParameter: "Advanced directives")
 		//print(finalPreventiveParameter)
 		let basicPreventiveRegex = regexTheText(theText!, startOfText: "Preventive care", endOfText: finalPreventiveParameter)
@@ -125,6 +132,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		preventiveRegex = cleanTheSections(preventiveRegex, badBits: ["Preventive care\n", "Social history", "Advanced directives"])
 		preventiveRegex = "PREVENTIVE CARE:\n" + preventiveRegex
 		
+		//Get the PMH & PSH info
 		let finalMedHistoryParameter = defineFinalParameter(theText!, firstParameter: "(free text)", secondParameter: "Preventive care")
 		let medHistoryRegex = regexTheText(theText!, startOfText: "Past medical history", endOfText: finalMedHistoryParameter)
 		var pshRegex = regexTheText(medHistoryRegex, startOfText: "Major events", endOfText: "Ongoing medical problems")
@@ -135,7 +143,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		pmhRegex = cleanTheSections(pmhRegex, badBits: ["Ongoing medical problems\n", "Allergies (free text)", "Allergies (free text", "PMH:\n", "PHM:\n", "Preventive care"])
 		pmhRegex = "PAST MEDICAL HISTORY:\n" + pmhRegex
 		
-		
+		//Create the PTVN template
 		let visitBoilerplateText = "CC:  \n\nS:  \nProblems:  \nLocation:  \nSeverity:  \nQuality:  \nDuration:  \nTiming:  \nContext:  \nModifying factors:  \nAssociated symptoms:  \n\nNEW PMH:  \n\nA(Charge):  \n\nP(lan):  \n\nO(PE):  \n\n"
 		
 		let finalResults = ("\(ptName)\nDOB:  \(ptDOB)    Age:  \(ptAge)\nDate:  \(internalVisitDate)\n\n\(visitBoilerplateText)\(medRegex)\n\n\(allergyResults)\n\n\(preventiveRegex)\n\n\(pmhRegex)\n\n\(pshRegex)\n\n\(nutritionRegex)\n\n\(socialRegex)\n\n\(fmhRegex)\n\n\(dxRegex)")

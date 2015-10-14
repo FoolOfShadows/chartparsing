@@ -37,11 +37,15 @@ func nameAgeDOB(theText: String) -> (String, String, String){
 	var lineCount = 0
 	if !theSplitText.isEmpty {
 		for currentLine in theSplitText {
-			if currentLine.rangeOfString("Add Photo") != nil {
-				let ageDOBLine = theSplitText[lineCount + 2]
-				ptName = theSplitText[lineCount + 1]
-				ptAge = simpleRegExMatch(ageDOBLine, theExpression: "^\\d*")
-				ptDOB = simpleRegExMatch(ageDOBLine, theExpression: "\\d./\\d./\\d*")
+			if currentLine.rangeOfString("PRN: ") != nil {
+				let ageLine = theSplitText[lineCount + 1]
+				//let dobLine = theSplitText[lineCount + 4]
+				ptName = theSplitText[lineCount - 1]
+				ptAge = simpleRegExMatch(ageLine, theExpression: "^\\d*")
+				//ptDOB = simpleRegExMatch(dobLine, theExpression: "\\d./\\d./\\d*")
+			} else if currentLine.rangeOfString("DOB: ") != nil {
+				let dobLine = currentLine
+				ptDOB = simpleRegExMatch(dobLine, theExpression: "\\d./\\d./\\d*")
 			}
 			lineCount++
 		}
@@ -170,6 +174,8 @@ func getFileLabellingName(name: String) -> String {
 	fileLabellingName = fileLabellingName.stringByReplacingOccurrencesOfString(" ", withString: "")
 	fileLabellingName = fileLabellingName.stringByReplacingOccurrencesOfString("-", withString: "")
 	fileLabellingName = fileLabellingName.stringByReplacingOccurrencesOfString("'", withString: "")
+	fileLabellingName = fileLabellingName.stringByReplacingOccurrencesOfString("(", withString: "")
+	fileLabellingName = fileLabellingName.stringByReplacingOccurrencesOfString(")", withString: "")
 	
 	
 return fileLabellingName
