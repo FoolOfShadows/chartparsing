@@ -176,6 +176,7 @@ func getFileLabellingName(name: String) -> String {
 	fileLabellingName = fileLabellingName.stringByReplacingOccurrencesOfString("'", withString: "")
 	fileLabellingName = fileLabellingName.stringByReplacingOccurrencesOfString("(", withString: "")
 	fileLabellingName = fileLabellingName.stringByReplacingOccurrencesOfString(")", withString: "")
+	fileLabellingName = fileLabellingName.stringByReplacingOccurrencesOfString("\"", withString: "")
 	
 	
 return fileLabellingName
