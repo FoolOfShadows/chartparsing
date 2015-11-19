@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -427,29 +427,29 @@
         <window title="PTVN Builder Help" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="LeC-PL-ZLp">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="940" y="781" width="581" height="323"/>
+            <rect key="contentRect" x="940" y="781" width="494" height="522"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
             <view key="contentView" id="7aN-cX-i4e">
-                <rect key="frame" x="0.0" y="0.0" width="581" height="323"/>
+                <rect key="frame" x="0.0" y="0.0" width="494" height="522"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K0i-t3-ztD">
-                        <rect key="frame" x="17" y="17" width="335" height="289"/>
+                        <rect key="frame" x="17" y="305" width="460" height="200"/>
                         <animations/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="PF Summary" id="ZcZ-Ag-hi2"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="Ellipsis" id="ZcZ-Ag-hi2"/>
                     </imageView>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="37V-74-RYi">
-                        <rect key="frame" x="389" y="73" width="174" height="230"/>
+                        <rect key="frame" x="18" y="49" width="458" height="251"/>
                         <animations/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="justified" id="Df1-q2-LNH">
                             <font key="font" metaFont="system"/>
-                            <string key="title">On the Summary tab in PF click in the empty space to the right of the "Flowsheets" edit box, then press Command-A (⌘-A) to select all the text on the page, then press Command-C (⌘-C) to copy that text to clipboard.  Once that's done and the time and day are filled out in the PTVN Builder screen, press "Create PTVN File".</string>
+                            <mutableString key="title">1) On the Summary tab of a patient's chart in Practice Fusion, click on the ellipsis to the far right of the patients name (to the right of your PF login) to reveal the patients date of birth  2) Press Command-A (⌘-A) to select all the text on the page.  All the visible text should be highlighted.  3) Press Command-C (⌘-C) to copy all the selected text to clipboard.  4) Fill in the appointment time field of the PTVN Builder window and select the correct day from the pop up menu.  5) Press "Create PTVN File".  A text file will be automatically generated in the appropriate location with the correct name and data.</mutableString>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6EU-V4-IM9">
-                        <rect key="frame" x="438" y="13" width="76" height="32"/>
+                        <rect key="frame" x="209" y="13" width="76" height="32"/>
                         <animations/>
                         <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="i8l-Bu-Dzm">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -464,10 +464,10 @@
                 </subviews>
                 <animations/>
             </view>
-            <point key="canvasLocation" x="553.5" y="875.5"/>
+            <point key="canvasLocation" x="677" y="699"/>
         </window>
     </objects>
     <resources>
-        <image name="PF Summary" width="404.5" height="339"/>
+        <image name="Ellipsis" width="696" height="282"/>
     </resources>
 </document>
