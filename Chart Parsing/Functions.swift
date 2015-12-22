@@ -156,8 +156,10 @@ func getFileLabellingName(name: String) -> String {
 		ptExtraName = ""
 	}
 	
+	if nameComponents.count > 2 {
 	if nameComponents[nameComponents.count - 2] == "Van" {
 		ptLastName = "Van " + ptLastName
+	}
 	}
 	
 	//Get first name

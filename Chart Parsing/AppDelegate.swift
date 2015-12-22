@@ -29,7 +29,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		// Insert code here to initialize your application
 	}
 	
-	
 	@IBAction func processButton(sender: AnyObject) {
 		//Get the info from the date scheduled popup menu
 		let ptVisitDate = visitDayView.indexOfSelectedItem
@@ -62,6 +61,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		//Get the clipboard to process
 		let pasteBoard = NSPasteboard.generalPasteboard()
 		let theText = pasteBoard.stringForType("public.utf8-plain-text")
+		if !theText!.containsString("Flowsheets") {
+			//Create an alert to let the user know the clipboard doesn't contain
+			//the correct PF data
+			print("You broke it!")
+			//After notifying the user, break out of the program
+			let theAlert = NSAlert()
+			theAlert.messageText = "It doesn't look like you've copied the correct bits out of Practice Fusion.\nPlease try again or click the help button for complete instructions.\nIf the problem continues, please contact the administrator."
+			theAlert.beginSheetModalForWindow(window) { (NSModalResponse) -> Void in
+				let returnCode = NSModalResponse
+				print(returnCode)}
+		} else {
 		
 		//Get name, age, gender, and birthdate
 		let ptNameAgeDOB = nameAgeDOB(theText!)
@@ -71,16 +81,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		
 		//Break apart components of patient name
 		let ptFileLabelName = getFileLabellingName(ptName)
-//		let ptNameComponents = ptName.componentsSeparatedByString(" ")
-//		let ptFirstName = ptNameComponents[0]
-//		var ptLastName = ptNameComponents[ptNameComponents.count - 1]
-//		if ptNameComponents[ptNameComponents.count - 2] == "Van" {
-//			ptLastName = "Van " + ptLastName
-//		}
-//		var ptMiddleName = ""
-//		if ptNameComponents.count > 2 {
-//			ptMiddleName = ptNameComponents[1]
-//		}
 
 		//Get the diagnosis info
 		var dxRegex = regexTheText(theText!, startOfText: "\\nDiagnoses", endOfText: "Social")
@@ -163,6 +163,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			let testText = try String(contentsOfFile: "\(savePath)/\(saveLocation)/\(fileName)")
 		} catch {
 			
+		}
 		}
 	}
 	
