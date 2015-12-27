@@ -54,8 +54,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		let visitDate = addingDays(theCurrentDate, daysToAdd: ptVisitDate)
 		let internalVisitDate = formatter.stringFromDate(visitDate)
 		let labelDateFormatter = NSDateFormatter()
-		labelDateFormatter.dateFormat = "YYMMdd"
+		labelDateFormatter.dateFormat = "yyMMdd"
 		let labelVisitDate = labelDateFormatter.stringFromDate(visitDate)
+		print("\(visitDate), \(internalVisitDate), \(labelVisitDate)")
 		
 		
 		//Get the clipboard to process
