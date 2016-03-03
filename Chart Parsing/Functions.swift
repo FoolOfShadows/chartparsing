@@ -13,6 +13,7 @@ import Foundation
 extension String {
 	func stringByTrimmingLeadingAndTrailingWhitespace() -> String {
 		let leadingAndTrailingWhitespacePattern = "\\s*\\n"
+		//The original pattern, which didn't work the way I wanted was:
 		//"(?:^\\s+)|(?:\\s+$)"
 		
 		do {
