@@ -44,7 +44,7 @@ let preventiveStartOfText = "Preventive care"
 let otherPreventiveEndOfTextFirstParameter = "Social history"
 let preventiveBadBits = ["Preventive care\n", "Social history", "Advanced directives"]
 
-let medhistoryEndOfTextFirstParameter = "Allergies\n" //was "(free text)"
+let medhistoryEndOfTextFirstParameter = "Family health history\n" //was "Allergies\n"
 let medhistoryEndOfTextSecondParameter = "Preventive care" //can probably get rid of this
 let medhistoryStartOfText = "Past medical history"
 
@@ -53,7 +53,9 @@ let pshEndOfText = "Ongoing medical problems"
 let pshBadBits = ["Major events\n", "Ongoing medical problems", "PSH:\n", "PHS:\n"]
 
 let pmhStartOfText = "Ongoing medical problems"
-let pmhBadBits = ["Ongoing medical problems\n", "Allergies (free text)", "Allergies\n", "PMH:\n", "PHM:\n", "Preventive care"]
+//Use this?
+let pmhEndOfText = "Family health history"
+let pmhBadBits = ["Ongoing medical problems\n", "Allergies (free text)", "Allergies\n", "PMH:\n", "PHM:\n", "Preventive care", "Family health history"]
 
 let visitBoilerplateText = "CC:  \nProblems:  \n\n\nS:  \n\nLocation:  \nSeverity:  \nQuality:  \nDuration:  \nTiming:  \nContext:  \nModifying factors:  \nAssociated symptoms:  \n\n\nNEW PMH:  \n\n\nA(Charge):  \n\n\nP(lan):  \n\n**Rx**  \n\n\nO(PE):  \n\n\n"
 
