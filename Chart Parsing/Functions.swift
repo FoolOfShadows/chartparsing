@@ -67,6 +67,30 @@ func defineFinalParameter(theText: String, firstParameter: String, secondParamet
 	return theParameter
 }
 
+//Check that the Diagnosis "Show by" is set to ICD-10
+func checkForICD10(theText: String, window: NSWindow) -> Bool {
+	var icd10bool = true
+	let start = "Diagnoses  Show by"
+	let end = "Chronic diagnoses"
+	let regex = try! NSRegularExpression(pattern: "\(start).*?\(end)", options: NSRegularExpressionOptions.DotMatchesLineSeparators)
+	let length = theText.characters.count
+	
+	if let match = regex.firstMatchInString(theText, options: [], range: NSRange(location: 0, length: length)) {
+		let theResult = (theText as NSString).substringWithRange(match.range)
+		if !theResult.containsString("ICD-10") {
+			icd10bool = false
+			//Create an alert to let the user know the diagnoses are not set to ICD10
+			print("Not set to ICD10")
+			//After notifying the user, break out of the program
+			let theAlert = NSAlert()
+			theAlert.messageText = "It appears Practice Fusion is not set to show ICD-10 diagnoses codes.  Please set the Show by option in the Diagnoses section to ICD-10 and try again."
+			theAlert.beginSheetModalForWindow(window) { (NSModalResponse) -> Void in
+				let returnCode = NSModalResponse
+				print(returnCode)}
+		}
+	}
+	return icd10bool
+}
 //Extract the text for the different sections from the complete text
 func regexTheText(theText: String, startOfText: String, endOfText: String) -> String {
 	var theResult = ""

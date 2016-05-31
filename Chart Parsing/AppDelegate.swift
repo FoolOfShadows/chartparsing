@@ -62,6 +62,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		//Get the clipboard to process
 		let pasteBoard = NSPasteboard.generalPasteboard()
 		let theText = pasteBoard.stringForType("public.utf8-plain-text")
+		if checkForICD10(theText!, window: window) == true {
 		if !theText!.containsString("Flowsheets") {
 			//Create an alert to let the user know the clipboard doesn't contain
 			//the correct PF data
@@ -165,6 +166,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		} catch {
 			
 		}
+			}
 		}
 	}
 	
