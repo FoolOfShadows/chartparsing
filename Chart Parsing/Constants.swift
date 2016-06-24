@@ -39,10 +39,10 @@ let freeAllergyStartOfText = "Allergies\nUse structured"
 let freeAllergyBadBits = ["Allergies (free text)\n", "ALLERGIES:", "ALLERGIES", "Use structured allergies to receive interaction alerts\n", "Food allergies:", "Food Allergies:", "Food Allergies", "Food allergies\n", "Food Allergies\n", "Environmental allergies:\n", "Environmental allergies: ", "Environmental allergies\n", "Environmental Allergies\n", "Drug allergies:", "Drug allergies-", "Drug allergies", "No Known Drug Allergies", "No Known", "Drug Allergies:", "Drug Allergies", "Family health history", "Preventive care", "No food allergies recorded\n", "Allergies\n"]
 
 let preventiveEndOfTextFirstParameter = "Nutrition history"
-let preventiveEndOfTextSecondParameter = "Advanced directives"
+let preventiveEndOfTextSecondParameter = "Advance directives"
 let preventiveStartOfText = "Preventive care"
 let otherPreventiveEndOfTextFirstParameter = "Social history"
-let preventiveBadBits = ["Preventive care\n", "Social history", "Advanced directives"]
+let preventiveBadBits = ["Preventive care\n", "Social history", "Advance directives"]
 
 let medhistoryEndOfTextFirstParameter = "Family health history\n" //was "Allergies\n"
 let medhistoryEndOfTextSecondParameter = "Preventive care" //can probably get rid of this

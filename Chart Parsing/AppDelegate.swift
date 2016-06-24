@@ -17,19 +17,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	@IBOutlet weak var visitTimeView: NSTextField!
 	@IBOutlet weak var visitDayView: NSPopUpButton!
 
-	@IBAction func processHelp(sender: AnyObject) {
+	@IBAction func processHelp(_ sender: AnyObject) {
 		helpWindow.makeKeyAndOrderFront(self)
 	}
 	
-	@IBAction func processCloseHelp(sender: AnyObject) {
+	@IBAction func processCloseHelp(_ sender: AnyObject) {
 		helpWindow.orderOut(self)
 	}
 	
-	func applicationDidFinishLaunching(aNotification: NSNotification) {
+	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		// Insert code here to initialize your application
 	}
 	
-	@IBAction func processButton(sender: AnyObject) {
+	@IBAction func processButton(_ sender: AnyObject) {
 		//Get the info from the date scheduled popup menu
 		let ptVisitDate = visitDayView.indexOfSelectedItem
 		
@@ -45,32 +45,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		}
 		
 		//Get current date and format it
-		let theCurrentDate = NSDate()
-		let formatter = NSDateFormatter()
-		formatter.dateStyle = .ShortStyle
+		let theCurrentDate = Date()
+		let formatter = DateFormatter()
+		formatter.dateStyle = .shortStyle
 		//let formattedDate = formatter.stringFromDate(theCurrentDate)
 		
 		//Get the visit date
 		let visitDate = addingDays(theCurrentDate, daysToAdd: ptVisitDate)
-		let internalVisitDate = formatter.stringFromDate(visitDate)
-		let labelDateFormatter = NSDateFormatter()
+		let internalVisitDate = formatter.string(from: visitDate)
+		let labelDateFormatter = DateFormatter()
 		labelDateFormatter.dateFormat = "yyMMdd"
-		let labelVisitDate = labelDateFormatter.stringFromDate(visitDate)
+		let labelVisitDate = labelDateFormatter.string(from: visitDate)
 		//print("\(visitDate), \(internalVisitDate), \(labelVisitDate)")
 		
 		
 		//Get the clipboard to process
-		let pasteBoard = NSPasteboard.generalPasteboard()
-		let theText = pasteBoard.stringForType("public.utf8-plain-text")
+		let pasteBoard = NSPasteboard.general()
+		let theText = pasteBoard.string(forType: "public.utf8-plain-text")
 		if checkForICD10(theText!, window: window) == true {
-		if !theText!.containsString("Flowsheets") {
+		if !theText!.contains("Flowsheets") {
 			//Create an alert to let the user know the clipboard doesn't contain
 			//the correct PF data
 			print("You broke it!")
 			//After notifying the user, break out of the program
 			let theAlert = NSAlert()
 			theAlert.messageText = "It doesn't look like you've copied the correct bits out of Practice Fusion.\nPlease try again or click the help button for complete instructions.\nIf the problem continues, please contact the administrator."
-			theAlert.beginSheetModalForWindow(window) { (NSModalResponse) -> Void in
+			theAlert.beginSheetModal(for: window) { (NSModalResponse) -> Void in
 				let returnCode = NSModalResponse
 				print(returnCode)}
 		} else {
@@ -92,7 +92,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		//Get the medicine info
 		var medRegex = regexTheText(theText!, startOfText: medStartOfText, endOfText: medEndOfText)
 		medRegex = cleanTheSections(medRegex, badBits: medBadBits)
-		medRegex = addCharatersToFront(medRegex, theCharacters: "-  ")
+		medRegex = addCharactersToFront(medRegex, theCharacters: "-  ")
 		medRegex = "CURRENT MEDICATIONS:\n(- = currently taking; x = not currently taking; ? = unsure)\n" + medRegex
 		
 		//Get the nutrition info
@@ -128,7 +128,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		
 		//Get the preventive info
 		let finalPreventiveParameter = defineFinalParameter(theText!, firstParameter: preventiveEndOfTextFirstParameter, secondParameter: preventiveEndOfTextSecondParameter)
-		//print(finalPreventiveParameter)
+		print(finalPreventiveParameter)
 		let basicPreventiveRegex = regexTheText(theText!, startOfText: preventiveStartOfText, endOfText: finalPreventiveParameter)
 		//print(basicPreventiveRegex)
 		let otherFinalPreventiveParameter = defineFinalParameter(basicPreventiveRegex, firstParameter: otherPreventiveEndOfTextFirstParameter, secondParameter: preventiveEndOfTextSecondParameter)
@@ -156,10 +156,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //		pasteBoard.setString(finalResults, forType: NSPasteboardTypeString)
 		
 		//Creates a file with the final output on the desktop
-		let ptvnData = finalResults.dataUsingEncoding(NSUTF8StringEncoding)
-		let newFileManager = NSFileManager.defaultManager()
+		let ptvnData = finalResults.data(using: String.Encoding.utf8)
+		let newFileManager = FileManager.default()
 		let savePath = NSHomeDirectory()
-		newFileManager.createFileAtPath("\(savePath)/\(saveLocation)/\(fileName)", contents: ptvnData, attributes: nil)
+		newFileManager.createFile(atPath: "\(savePath)/\(saveLocation)/\(fileName)", contents: ptvnData, attributes: nil)
 		
 		do {
 			let testText = try String(contentsOfFile: "\(savePath)/\(saveLocation)/\(fileName)")
@@ -170,11 +170,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		}
 	}
 	
-	func applicationShouldTerminateAfterLastWindowClosed(sender: NSApplication) -> Bool {
+	func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
 		return true
 	}
 
-	func applicationWillTerminate(aNotification: NSNotification) {
+	func applicationWillTerminate(_ aNotification: Notification) {
 		// Insert code here to tear down your application
 	}
 
