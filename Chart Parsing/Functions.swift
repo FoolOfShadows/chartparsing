@@ -127,8 +127,8 @@ func simpleRegExMatch(_ theText: String, theExpression: String) -> String {
 
 //Adjust visit date values based on how far the visit is scheduled into the future
 func addingDays (_ theDate: Date, daysToAdd: Int) -> Date {
-	let components:DateComponents = DateComponents()
-	(components as NSDateComponents).setValue(daysToAdd, forComponent: Calendar.Unit.day);
+	var components:DateComponents = DateComponents()
+	components.setValue(daysToAdd, forComponent: Calendar.Unit.day)
 	let newDate = Calendar.current().date(byAdding: components, to: theDate, options: Calendar.Options(rawValue:0))
 	return newDate!
 }
