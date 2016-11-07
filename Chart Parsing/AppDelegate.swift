@@ -47,7 +47,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		//Get current date and format it
 		let theCurrentDate = Date()
 		let formatter = DateFormatter()
-		formatter.dateStyle = .shortStyle
+		formatter.dateStyle = DateFormatter.Style.short
 		//let formattedDate = formatter.stringFromDate(theCurrentDate)
 		
 		//Get the visit date
@@ -157,7 +157,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		
 		//Creates a file with the final output on the desktop
 		let ptvnData = finalResults.data(using: String.Encoding.utf8)
-		let newFileManager = FileManager.default()
+		let newFileManager = FileManager.default
 		let savePath = NSHomeDirectory()
 		newFileManager.createFile(atPath: "\(savePath)/\(saveLocation)/\(fileName)", contents: ptvnData, attributes: nil)
 		

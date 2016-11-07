@@ -17,7 +17,7 @@ extension String {
 		//"(?:^\\s+)|(?:\\s+$)"
 		
 		do {
-			let regex = try RegularExpression(pattern: leadingAndTrailingWhitespacePattern, options: .dotMatchesLineSeparators)
+			let regex = try NSRegularExpression(pattern: leadingAndTrailingWhitespacePattern, options: .dotMatchesLineSeparators)
 			let range = NSMakeRange(0, self.characters.count)
 			let trimmedString = regex.stringByReplacingMatches(in: self, options: .reportProgress, range:range, withTemplate:"\n")
 			
@@ -44,13 +44,16 @@ func nameAgeDOB(_ theText: String) -> (String, String, String){
 				ptName = theSplitText[lineCount - 1]
 				ptAge = simpleRegExMatch(ageLine, theExpression: "^\\d*")
 				//ptDOB = simpleRegExMatch(dobLine, theExpression: "\\d./\\d./\\d*")
-			} else if currentLine.range(of: "DOB: ") != nil {
+			} else if currentLine.hasPrefix("DOB: ")/*.range(of: "DOB: ") != nil*/ {
+				
+				print("In the DOB clause")
 				let dobLine = currentLine
 				ptDOB = simpleRegExMatch(dobLine, theExpression: "\\d./\\d./\\d*")
 			}
 			lineCount += 1
 		}
 	}
+	print(ptName, ptAge, ptDOB)
 	return (ptName, ptAge, ptDOB)
 	
 }
@@ -72,7 +75,7 @@ func checkForICD10(_ theText: String, window: NSWindow) -> Bool {
 	var icd10bool = true
 	let start = "Diagnoses  Show by"
 	let end = "Chronic diagnoses"
-	let regex = try! RegularExpression(pattern: "\(start).*?\(end)", options: RegularExpression.Options.dotMatchesLineSeparators)
+	let regex = try! NSRegularExpression(pattern: "\(start).*?\(end)", options: NSRegularExpression.Options.dotMatchesLineSeparators)
 	let length = theText.characters.count
 	
 	if let match = regex.firstMatch(in: theText, options: [], range: NSRange(location: 0, length: length)) {
@@ -94,7 +97,7 @@ func checkForICD10(_ theText: String, window: NSWindow) -> Bool {
 //Extract the text for the different sections from the complete text
 func regexTheText(_ theText: String, startOfText: String, endOfText: String) -> String {
 	var theResult = ""
-	let regex = try! RegularExpression(pattern: "\(startOfText).*?\(endOfText)", options: RegularExpression.Options.dotMatchesLineSeparators)
+	let regex = try! NSRegularExpression(pattern: "\(startOfText).*?\(endOfText)", options: NSRegularExpression.Options.dotMatchesLineSeparators)
 	let length = theText.characters.count
 	
 	if let match = regex.firstMatch(in: theText, options: [], range: NSRange(location: 0, length: length)) {
@@ -116,7 +119,7 @@ func cleanTheSections(_ theSection:String, badBits:[String]) -> String {
 //A basic regular expression search function
 func simpleRegExMatch(_ theText: String, theExpression: String) -> String {
 	var theResult = ""
-	let regEx = try! RegularExpression(pattern: theExpression, options: [])
+	let regEx = try! NSRegularExpression(pattern: theExpression, options: [])
 	let length = theText.characters.count
 	
 	if let match = regEx.firstMatch(in: theText, options: [], range: NSRange(location: 0, length: length)) {
@@ -127,9 +130,9 @@ func simpleRegExMatch(_ theText: String, theExpression: String) -> String {
 
 //Adjust visit date values based on how far the visit is scheduled into the future
 func addingDays (_ theDate: Date, daysToAdd: Int) -> Date {
-	var components:DateComponents = DateComponents()
-	components.setValue(daysToAdd, forComponent: Calendar.Unit.day)
-	let newDate = Calendar.current().date(byAdding: components, to: theDate, options: Calendar.Options(rawValue:0))
+	var components = DateComponents()
+	components.setValue(daysToAdd, for: .day)
+	let newDate = Calendar.current.date(byAdding: components, to: theDate)
 	return newDate!
 }
 
