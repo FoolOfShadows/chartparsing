@@ -14,7 +14,7 @@ let dxBadBits = ["Chronic diagnoses\n", "No active Acute diagnoses.\n", "Acute d
 
 let medStartOfText = "\\nMedications"
 let medEndOfText = "Encounters"
-let medBadBits = ["Medications\n", "Encounters", " Show historical"]
+let medBadBits = ["Medications", "Encounters", " Show historical"]
 
 let nutritionStartOfText = "\\nNutrition history"
 let nutritionEndOfText = "Advanced directives"

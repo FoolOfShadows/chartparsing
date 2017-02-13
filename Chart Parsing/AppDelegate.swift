@@ -38,7 +38,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		switch ptVisitDate {
 		case 0:
 			saveLocation = "WPCMSharedFiles/zDoctor Review/06 Dummy Files"
-		case 1...3:
+		case 1...4:
 			saveLocation = "WPCMSharedFiles/zruss Review/Tomorrows Files"
 		default:
 			saveLocation = "Desktop"

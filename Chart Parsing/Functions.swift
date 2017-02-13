@@ -10,21 +10,58 @@ import Cocoa
 import Foundation
 
 //Cribbed from raywenderlich.com.  Updated for Swift 2.0
+//extension String {
+//	func stringByTrimmingLeadingAndTrailingWhitespace() -> String {
+//		let leadingAndTrailingWhitespacePattern = "\\s*\\n"
+//		//The original pattern, which didn't work the way I wanted was:
+//		//"(?:^\\s+)|(?:\\s+$)"
+//		
+//		do {
+//			let regex = try NSRegularExpression(pattern: leadingAndTrailingWhitespacePattern, options: .dotMatchesLineSeparators)
+//			let range = NSMakeRange(0, self.characters.count)
+//			let trimmedString = regex.stringByReplacingMatches(in: self, options: .reportProgress, range:range, withTemplate:"\n")
+//			
+//			return trimmedString
+//		} catch _ {
+//			return self
+//		}
+//	}
+//}
+
 extension String {
-	func stringByTrimmingLeadingAndTrailingWhitespace() -> String {
-		let leadingAndTrailingWhitespacePattern = "\\s*\\n"
-		//The original pattern, which didn't work the way I wanted was:
-		//"(?:^\\s+)|(?:\\s+$)"
+	func findRegexMatchBetween(_ start: String, and end:String) -> String? {
+		guard let startRegex = try? NSRegularExpression(pattern: start, options: []) else { return nil }
+		guard let endRegex = try? NSRegularExpression(pattern: end, options: []) else {return nil }
+		let startMatch = startRegex.matches(in: self, options: [], range: NSRange(location: 0, length: self.characters.count))
+		let endMatch = endRegex.matches(in: self, options: [], range: NSRange(location: 0, length: self.characters.count))
 		
-		do {
-			let regex = try NSRegularExpression(pattern: leadingAndTrailingWhitespacePattern, options: .dotMatchesLineSeparators)
-			let range = NSMakeRange(0, self.characters.count)
-			let trimmedString = regex.stringByReplacingMatches(in: self, options: .reportProgress, range:range, withTemplate:"\n")
-			
-			return trimmedString
-		} catch _ {
-			return self
-		}
+		let startRange = startMatch[0].range
+		let endRange = endMatch[0].range
+		
+		let r = self.index(self.startIndex, offsetBy: startRange.location) ..< self.index(self.startIndex, offsetBy: endRange.location + endRange.length)
+		
+		return self.substring(with: r)
+	}
+	
+	
+	func findRegexMatchFrom(_ start: String, to end: String) -> String? {
+		guard let startRegex = try? NSRegularExpression(pattern: start, options: []) else { return nil }
+		guard let endRegex = try? NSRegularExpression(pattern: end, options: []) else {return nil }
+		let startMatch = startRegex.matches(in: self, options: [], range: NSRange(location: 0, length: self.characters.count))
+		let endMatch = endRegex.matches(in: self, options: [], range: NSRange(location: 0, length: self.characters.count))
+		
+		let startRange = startMatch[0].range
+		let endRange = endMatch[0].range
+		
+		let r = self.index(self.startIndex, offsetBy: startRange.location + startRange.length) ..< self.index(self.startIndex, offsetBy: endRange.location)
+		
+		return self.substring(with: r)
+		
+	}
+	
+	
+	func removeWhiteSpace() -> String {
+		return self.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
 	}
 }
 
@@ -108,7 +145,7 @@ func regexTheText(_ theText: String, startOfText: String, endOfText: String) -> 
 	
 //Clean extraneous text from the sections
 func cleanTheSections(_ theSection:String, badBits:[String]) -> String {
-	var cleanedText = theSection.stringByTrimmingLeadingAndTrailingWhitespace()
+	var cleanedText = theSection.removeWhiteSpace()
 	for theBit in badBits {
 		cleanedText = cleanedText.replacingOccurrences(of: theBit, with: "")
 	}
