@@ -60,8 +60,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		
 		
 		//Get the clipboard to process
-		let pasteBoard = NSPasteboard.general()
-		let theText = pasteBoard.string(forType: "public.utf8-plain-text")
+        let pasteBoard = NSPasteboard.general
+        let theText = pasteBoard.string(forType: NSPasteboard.PasteboardType(rawValue: "public.utf8-plain-text"))
 		if checkForICD10(theText!, window: window) == true {
 		if !theText!.contains("Flowsheets") {
 			//Create an alert to let the user know the clipboard doesn't contain
@@ -90,7 +90,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		dxRegex = "DIAGNOSES:\n" + dxRegex
 		
 		//Get the medicine info
-		var medRegex = regexTheText(theText!, startOfText: medStartOfText, endOfText: medEndOfText)
+        var medRegex = theText?.findRegexMatchBetween(medStartOfText, and: medEndOfText) ?? ""
+		//var medRegex = regexTheText(theText!, startOfText: medStartOfText, endOfText: medEndOfText)
 		medRegex = cleanTheSections(medRegex, badBits: medBadBits)
 		medRegex = addCharactersToFront(medRegex, theCharacters: "-  ")
 		medRegex = "CURRENT MEDICATIONS:\n(- = currently taking; x = not currently taking; ? = unsure)\n" + medRegex

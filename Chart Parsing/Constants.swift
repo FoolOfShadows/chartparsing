@@ -12,7 +12,7 @@ let dxStartOfText = "\\nDiagnoses"
 let dxEndOfText = "Social"
 let dxBadBits = ["Chronic diagnoses\n", "No active Acute diagnoses.\n", "Acute diagnoses\n", "Diagnoses", "Social", "Term\n", "Show by"]
 
-let medStartOfText = "\\nMedications"
+let medStartOfText = "\nMedications"
 let medEndOfText = "Encounters"
 let medBadBits = ["Medications", "Encounters", " Show historical"]
 
@@ -60,6 +60,6 @@ let pmhBadBits = ["Ongoing medical problems\n", "Allergies (free text)", "Allerg
 let visitBoilerplateText = "CC:  \nProblems:  \n\n\nS:  \n\nLocation:  \nSeverity:  \nQuality:  \nDuration:  \nTiming:  \nContext:  \nModifying factors:  \nAssociated symptoms:  \n\n\nNEW PMH:  \n\n\nA(Charge):  \n\n\nP(lan):  \n\n**Rx**  \n\n\nO(PE):  \n\n\n"
 
 
-
+let mucusColor = ["", "Clear", "White", "Yellow", "Green", "Brown", "Bloody"]
 
 

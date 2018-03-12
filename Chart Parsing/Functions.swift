@@ -135,7 +135,7 @@ func checkForICD10(_ theText: String, window: NSWindow) -> Bool {
 func regexTheText(_ theText: String, startOfText: String, endOfText: String) -> String {
 	var theResult = ""
 	let regex = try! NSRegularExpression(pattern: "\(startOfText).*?\(endOfText)", options: NSRegularExpression.Options.dotMatchesLineSeparators)
-	let length = theText.characters.count
+	let length = theText.count
 	
 	if let match = regex.firstMatch(in: theText, options: [], range: NSRange(location: 0, length: length)) {
 		theResult = (theText as NSString).substring(with: match.range)
